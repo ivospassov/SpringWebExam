@@ -1,0 +1,63 @@
+h2 {
+  color: #ed1b2e;
+  font-size: 26px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  margin-top: 155px;
+}
+
+.appointment-section {
+  padding-left: 85px;
+}
+
+.location,
+.specialty {
+  border-color: #ed1b2e;
+}
+
+.hospital-search,
+.location,
+.specialty {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  width: 370px;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  font-size: 15px;
+  margin-bottom: 10px;
+  border-radius: 8px;
+  border-width: 1.5px;
+  color: grey;
+}
+
+.logo-name {
+  color: #dc3545;
+  font-weight: 500;
+}
+
+.navbar-btn {
+  background-color: #dc3545;
+}
+
+.img-container {
+  float: left;
+  width: 50%;
+  /* margin-bottom: 150px; */
+}
+
+.img-doctor {
+  width: 270px;
+  height: 270px;
+  float: right;
+}
+
+#submit-btn {
+  background-color: #dc3545;
+}
+
+#footer {
+  font-size: 30px;
+}
+
+#bg-auth-img {
+  background-image: url("../img/auth-bg.jpg");
+  height: 92vh
+}
