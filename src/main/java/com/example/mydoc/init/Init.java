@@ -8,14 +8,14 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 @Component
-public class InitCities implements CommandLineRunner {
+public class Init implements CommandLineRunner {
 
     private final CityService cityService;
     private final DoctorService doctorService;
     private final HospitalService hospitalService;
     private final SpecialtyService specialtyService;
 
-    public InitCities(CityService cityService, DoctorService doctorService, HospitalService hospitalService, SpecialtyService specialtyService) {
+    public Init(CityService cityService, DoctorService doctorService, HospitalService hospitalService, SpecialtyService specialtyService) {
         this.cityService = cityService;
         this.doctorService = doctorService;
         this.hospitalService = hospitalService;

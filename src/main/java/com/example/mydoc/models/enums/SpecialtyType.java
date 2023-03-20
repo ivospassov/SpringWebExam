@@ -1,6 +1,6 @@
 package com.example.mydoc.models.enums;
 
 public enum SpecialtyType {
-    IMMUNOLOGY, ANESTHESIOLOGY, DERMATOLOGY, RADIOLOGY, OPHTHALMOLOGY,
-    PEDIATRICS, REHABILITATION, PSYCHIATRY, ONCOLOGY, UROLOGY
+    Immunology, Anesthesiology, Dermatology, Radiology, Ophthalmology,
+    Pediatrics, Rehabilitation, Psychiatry, Oncology, Urology
 }

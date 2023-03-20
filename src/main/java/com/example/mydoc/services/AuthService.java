@@ -1,5 +1,6 @@
 package com.example.mydoc.services;
 
+import com.example.mydoc.models.dto.UserLoginDTO;
 import com.example.mydoc.models.dto.UserRegisterDTO;
 
 public interface AuthService {
@@ -11,4 +12,8 @@ public interface AuthService {
     void registerUser(UserRegisterDTO userRegisterDTO);
 
     boolean userCredentialsAreValid(String username, String password);
+
+    void loginUser(UserLoginDTO userLoginDTO);
+
+    void logoutUser();
 }

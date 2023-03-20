@@ -54,6 +54,7 @@ public class LoginController {
 
         //TODO: redirect to HOME page
         //TODO: Display 'Hello ${USER} alert message on display!'
+        this.authService.loginUser(userLoginDTO);
         return "redirect:/";
     }
 }

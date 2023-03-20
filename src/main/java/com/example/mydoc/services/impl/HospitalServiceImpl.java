@@ -32,14 +32,12 @@ public class HospitalServiceImpl implements HospitalService {
     @Override
     public void seedHospitals() {
 
-        List<CitiesName> citiesNames = List.of(CitiesName.values());
-
         if (isHospitalListEmpty()) {
             List<Hospital> hospitals = Arrays
                     .stream(HospitalsName.values())
                     .map(hospital -> {
                         Random random = new Random();
-                        Integer randomId = random.ints(1, 9)
+                        Integer randomId = random.ints(1, 5)
                                                 .findFirst().getAsInt();
                         return new Hospital(hospital.name(), cityService.findByCityId(Long.parseLong(String.valueOf(randomId))));
                     }).toList();
