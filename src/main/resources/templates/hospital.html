@@ -2,6 +2,9 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:include="~{/fragments/head}"/>
 <body>
+<header id="top" class="header mb-5">
+    <th:block th:include="~{/fragments/nav}"/>
+</header>
 <div class="container">
     <div class="row">
         <div class="hospital-description">
@@ -15,6 +18,11 @@
         </div>
         <div class="hospital-img">
             <img th:src="${hospitalImage}" class="rounded float-left" alt="current hospital">
+        </div>
+        <div>
+            <a class="show-doc-btn" th:href="@{/hospital/{id}(id=${hospitalId})/doctors}">
+                <button type="button" class="btn btn-danger">Show Available Doctors!</button>
+            </a>
         </div>
     </div>
 </div>
