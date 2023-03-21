@@ -11,6 +11,9 @@ public class Hospital extends BaseEntity {
     @Column(nullable = false)
     private String name;
 
+    @Basic
+    private String image;
+
     @ManyToOne
     private City city;
 
@@ -46,5 +49,13 @@ public class Hospital extends BaseEntity {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

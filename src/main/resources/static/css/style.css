@@ -6,7 +6,7 @@ h2 {
 }
 
 .appointment-section {
-  padding-left: 85px;
+  padding-right: 285px;
 }
 
 .location,
@@ -44,9 +44,10 @@ h2 {
 }
 
 .img-doctor {
-  width: 270px;
-  height: 270px;
+  width: 380px;
+  height: 330px;
   float: right;
+  padding-right: 80px;
 }
 
 #submit-btn {
@@ -61,3 +62,25 @@ h2 {
   background-image: url("../img/auth-bg.jpg");
   height: 92vh
 }
+
+.rsc-nf {
+  background-image: url("../img/AdobeStock_279753293.jpeg");
+  width: 100%;
+  height: 100vh;
+  background-repeat: no-repeat;
+}
+
+.wrapper {
+  width:85%;
+  display:flex;
+  gap: 20px;
+}
+
+/*.hospital-img {*/
+/*  width: auto;*/
+/*  height: auto;*/
+/*}*/
+
+/*.hospital-description {*/
+/*  width: 40px;*/
+/*}*/

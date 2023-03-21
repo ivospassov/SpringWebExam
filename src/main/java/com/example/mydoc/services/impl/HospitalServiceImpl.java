@@ -11,10 +11,19 @@ import org.springframework.stereotype.Service;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
 import java.util.Random;
 
 @Service
 public class HospitalServiceImpl implements HospitalService {
+    private static final String HOPE_URL = "https://upload.wikimedia.org/wikipedia/commons/e/eb/Hope_Building%2C_Salford_Royal_Hospital_-_geograph.org.uk_-_2586383.jpg";
+    private static final String ISUL_URL = "https://trud.bg/public/images/articles/2020-11/%D1%83%D0%BC%D0%B1%D0%B0%D0%BB_%D1%86%D0%B0%D1%80%D0%B8%D1%86%D0%B0_%D0%B9%D0%BE%D0%B0%D0%BD%D0%B0_-_%D0%B8%D1%81%D1%83%D0%BB_3556714952462417095_big.jpg";
+    private static final String TOKUDA_URL = "https://acibademcityclinic.bg/images/librariesprovider2/tokuda-outsde/tokuda_outside-(1)ca9abea4acd54194b7831efd4f457ff1.jpeg?sfvrsn=784fffc1_9";
+    private static final String NADEZHDA_URL = "https://pbs.twimg.com/media/EOYyqskW4AActyz.jpg"; //OR https://nadezhdahospital.com/wp-content/uploads/2021/09/Screenshot-2021-09-16-at-19.35.23-1024x692.png
+    private static final String SOFIAMED_URL = "https://hospitalsofiamed.bg/images/theme/sofmed.jpg";
+    private static final String ALEKSANDROVSKA_URL = "https://glasnews.bg/news/2021/07/07/aleksandrovska-bolnitsa-veche-e-novo-926.jpg";
+    private static final String SERDIKA_URL = "https://serdika.com/wp-content/uploads/2019/06/%D0%A1%D0%B3%D1%80%D0%B0%D0%B4%D0%B0_.jpg";
+    private static final String MAYO_URL = "https://images.unsplash.com/photo-1596541223130-5d31a73fb6c6?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8bWF5byUyMGNsaW5pY3xlbnwwfHwwfHw%3D&w=1000&q=80";
 
     private final HospitalRepository hospitalRepository;
     private final CityService cityService;
@@ -39,15 +48,39 @@ public class HospitalServiceImpl implements HospitalService {
                         Random random = new Random();
                         Integer randomId = random.ints(1, 5)
                                                 .findFirst().getAsInt();
-                        return new Hospital(hospital.name(), cityService.findByCityId(Long.parseLong(String.valueOf(randomId))));
+                        Hospital newHospital = new Hospital(hospital.name(), cityService.findByCityId(Long.parseLong(String.valueOf(randomId))));
+                        return setImageUrl(newHospital);
                     }).toList();
 
             this.hospitalRepository.saveAll(hospitals);
+
+
         }
+    }
+
+    private Hospital setImageUrl(Hospital hospital) {
+
+        switch (hospital.getName().toLowerCase()) {
+            case "sofiamed" -> hospital.setImage(SOFIAMED_URL);
+            case "mayo" -> hospital.setImage(MAYO_URL);
+            case "aleksandrovska" -> hospital.setImage(ALEKSANDROVSKA_URL);
+            case "serdika" -> hospital.setImage(SERDIKA_URL);
+            case "tokuda" -> hospital.setImage(TOKUDA_URL);
+            case "isul" -> hospital.setImage(ISUL_URL);
+            case "nadezhda" -> hospital.setImage(NADEZHDA_URL);
+            case "hope" -> hospital.setImage(HOPE_URL);
+        }
+
+        return hospital;
     }
 
     @Override
     public Hospital findById(Long id) {
         return this.hospitalRepository.findById(id).get();
+    }
+
+    @Override
+    public Optional<Hospital> findByName(String name) {
+        return this.hospitalRepository.findByName(name);
     }
 }

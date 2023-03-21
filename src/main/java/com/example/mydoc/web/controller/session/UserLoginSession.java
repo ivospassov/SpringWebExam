@@ -1,4 +1,4 @@
-package com.example.mydoc.session;
+package com.example.mydoc.web.controller.session;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.context.annotation.SessionScope;
