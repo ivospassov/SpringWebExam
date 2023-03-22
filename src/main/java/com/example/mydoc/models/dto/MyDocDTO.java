@@ -1,4 +1,4 @@
-package com.example.mydoc.models.entities;
+package com.example.mydoc.models.dto;
 
 import com.example.mydoc.models.enums.CitiesName;
 import com.example.mydoc.models.enums.SpecialtyType;

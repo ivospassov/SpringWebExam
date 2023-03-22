@@ -20,8 +20,8 @@
             <img th:src="${hospitalImage}" class="rounded float-left" alt="current hospital">
         </div>
         <div>
-            <a class="show-doc-btn" th:href="@{/hospital/{id}(id=${hospitalId})/doctors}">
-                <button type="button" class="btn btn-danger">Show Available Doctors!</button>
+            <a class="show-doc-btn" th:href="@{/hospital/{id}(id=${hospitalId})}">
+                <button type="submit" class="btn btn-danger">Show Available Doctors!</button>
             </a>
         </div>
     </div>

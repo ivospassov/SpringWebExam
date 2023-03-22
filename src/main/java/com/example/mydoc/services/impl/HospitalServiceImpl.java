@@ -1,18 +1,13 @@
 package com.example.mydoc.services.impl;
 
-import com.example.mydoc.models.entities.City;
 import com.example.mydoc.models.entities.Hospital;
-import com.example.mydoc.models.enums.CitiesName;
 import com.example.mydoc.models.enums.HospitalsName;
 import com.example.mydoc.repositories.HospitalRepository;
 import com.example.mydoc.services.CityService;
 import com.example.mydoc.services.HospitalService;
 import org.springframework.stereotype.Service;
 
-import java.util.Arrays;
-import java.util.List;
-import java.util.Optional;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class HospitalServiceImpl implements HospitalService {
@@ -42,19 +37,31 @@ public class HospitalServiceImpl implements HospitalService {
     public void seedHospitals() {
 
         if (isHospitalListEmpty()) {
-            List<Hospital> hospitals = Arrays
-                    .stream(HospitalsName.values())
-                    .map(hospital -> {
-                        Random random = new Random();
-                        Integer randomId = random.ints(1, 5)
-                                                .findFirst().getAsInt();
-                        Hospital newHospital = new Hospital(hospital.name(), cityService.findByCityId(Long.parseLong(String.valueOf(randomId))));
-                        return setImageUrl(newHospital);
-                    }).toList();
+//            List<Hospital> hospitals = Arrays
+//                    .stream(HospitalsName.values())
+//                    .map(hospital -> {
+//                        Random random = new Random();
+//                        Integer randomId = random.ints(1, 5)
+//                                                .findFirst().getAsInt();
+//                        Hospital newHospital = new Hospital(hospital.name(), cityService.findByCityId(Long.parseLong(String.valueOf(randomId))));
+//                        return setImageUrl(newHospital);
+//                    }).toList();
+//
+//            List<Hospital> hospitals = Arrays
+//                    .stream(HospitalsName.values()).toList();
 
-            this.hospitalRepository.saveAll(hospitals);
+            Hospital isul = new Hospital(HospitalsName.Isul.name(), cityService.findByCityId(1L));
+            Hospital tokuda = new Hospital(HospitalsName.Tokuda.name(), cityService.findByCityId(2L));
+            Hospital nadezhda = new Hospital(HospitalsName.Nadezhda.name(), cityService.findByCityId(3L));
+            Hospital hope = new Hospital(HospitalsName.Hope.name(), cityService.findByCityId(4L));
+            Hospital sofiamed = new Hospital(HospitalsName.SofiaMed.name(), cityService.findByCityId(1L));
+            Hospital mayo = new Hospital(HospitalsName.Mayo.name(), cityService.findByCityId(5L));
+            Hospital aleksandrovska = new Hospital(HospitalsName.Aleksandrovska.name(), cityService.findByCityId(2L));
+            Hospital serdika = new Hospital(HospitalsName.Serdika.name(), cityService.findByCityId(3L));
 
-
+            List<Hospital> hospitals = new ArrayList<>(List.of(isul, tokuda, nadezhda, hope, sofiamed, mayo, aleksandrovska, serdika));
+            List<Hospital> modifiedHospitals = hospitals.stream().map(this::setImageUrl).toList();
+            this.hospitalRepository.saveAll(modifiedHospitals);
         }
     }
 
@@ -82,5 +89,15 @@ public class HospitalServiceImpl implements HospitalService {
     @Override
     public Optional<Hospital> findByName(String name) {
         return this.hospitalRepository.findByName(name);
+    }
+
+    @Override
+    public List<Hospital> findAllHospitals() {
+        return this.hospitalRepository.findAll();
+    }
+
+    @Override
+    public List<Hospital> findByCity(String cityName) {
+        return this.hospitalRepository.findByCityName(cityName);
     }
 }

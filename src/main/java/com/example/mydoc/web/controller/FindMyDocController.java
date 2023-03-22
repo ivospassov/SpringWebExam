@@ -1,7 +1,7 @@
 package com.example.mydoc.web.controller;
 
 import com.example.mydoc.models.entities.Hospital;
-import com.example.mydoc.models.entities.MyDocDTO;
+import com.example.mydoc.models.dto.MyDocDTO;
 import com.example.mydoc.services.HospitalService;
 import com.example.mydoc.services.MyDocService;
 import org.springframework.stereotype.Controller;

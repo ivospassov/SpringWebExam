@@ -22,6 +22,9 @@ public class Doctor extends BaseEntity {
     @Column(columnDefinition = "TEXT")
     private String biography;
 
+    @Basic
+    private String photoUrl;
+
     @Column(nullable = false)
     @Email
     private String email;
@@ -38,7 +41,7 @@ public class Doctor extends BaseEntity {
 
     public Doctor(String firstName, String lastName, Integer age,
                   Specialty specialty, String biography, String email,
-                  City city, Hospital hospital) {
+                  City city, Hospital hospital, String photoUrl) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.age = age;
@@ -47,6 +50,7 @@ public class Doctor extends BaseEntity {
         this.email = email;
         this.city = city;
         this.hospital = hospital;
+        this.photoUrl = photoUrl;
     }
 
     public String getFirstName() {
@@ -111,5 +115,13 @@ public class Doctor extends BaseEntity {
 
     public void setBiography(String biography) {
         this.biography = biography;
+    }
+
+    public String getPhotoUrl() {
+        return photoUrl;
+    }
+
+    public void setPhotoUrl(String photoUrl) {
+        this.photoUrl = photoUrl;
     }
 }

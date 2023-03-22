@@ -38,4 +38,9 @@ public class CityServiceImpl implements CityService {
     public City findByCityId(Long id) {
         return this.cityRepository.findById(id).get();
     }
+
+    @Override
+    public List<City> findAllCities() {
+        return this.cityRepository.findAll();
+    }
 }

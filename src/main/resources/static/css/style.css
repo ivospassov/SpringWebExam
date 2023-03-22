@@ -76,6 +76,17 @@ h2 {
   gap: 20px;
 }
 
+.doc {
+  background-image: url("https://img.freepik.com/premium-photo/doctor-s-stethoscope-with-blue-background_23-2147652363.jpg");
+  background-repeat: no-repeat;
+  box-shadow: var(--shadow);
+  display: grid;
+  grid-gap: 30px;
+  grid-template-columns: repeat(2, 1fr);
+  padding: 3rem;
+  grid-row: auto;
+}
+
 /*.hospital-img {*/
 /*  width: auto;*/
 /*  height: auto;*/

@@ -5,7 +5,7 @@ import com.example.mydoc.models.dto.UserRegisterDTO;
 import com.example.mydoc.models.entities.User;
 import com.example.mydoc.repositories.UserRepository;
 import com.example.mydoc.services.AuthService;
-import com.example.mydoc.web.controller.session.UserLoginSession;
+import com.example.mydoc.web.session.UserLoginSession;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;

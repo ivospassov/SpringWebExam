@@ -2,6 +2,13 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <th:block th:include="~{/fragments/head}" />
 <body>
-<th:block th:include="~{/fragments/nav}" />
+<header class="top-header"><th:block th:include="~{/fragments/nav}" /></header>
+<section th:each="doctor: ${doctors}" class="doc">
+    <img style="max-width: 100%; width: 700px" th:src="${doctor.photoUrl}" alt="Doctor image">
+    <div>
+        <h2 th:text="'Dr. ' + ${doctor.firstName} + ' ' + ${doctor.lastName}"></h2>
+        <p th:text="${doctor.biography}"/>
+    </div>
+</section>
 </body>
 </html>
