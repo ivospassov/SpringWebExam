@@ -29,6 +29,9 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "patient", targetEntity = Review.class)
     private Set<Review> reviews;
 
+    @OneToMany(mappedBy = "patient", targetEntity = Appointment.class)
+    private Set<Appointment> appointments;
+
     public User() {}
 
     public String getUsername() {
@@ -106,5 +109,13 @@ public class User extends BaseEntity {
 
     public void setReviews(Set<Review> reviews) {
         this.reviews = reviews;
+    }
+
+    public Set<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(Set<Appointment> appointments) {
+        this.appointments = appointments;
     }
 }

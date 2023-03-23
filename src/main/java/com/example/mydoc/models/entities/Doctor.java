@@ -3,6 +3,8 @@ package com.example.mydoc.models.entities;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "doctors")
 public class Doctor extends BaseEntity {
@@ -35,7 +37,8 @@ public class Doctor extends BaseEntity {
     @ManyToOne
     private Hospital hospital;
 
-    //Patient - User ???
+    @OneToMany(mappedBy = "doctor", targetEntity = Appointment.class, fetch = FetchType.EAGER, cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+    private Set<Appointment> appointments;
 
     public Doctor() {}
 
@@ -123,5 +126,13 @@ public class Doctor extends BaseEntity {
 
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
+    }
+
+    public Set<Appointment> getAppointments() {
+        return appointments;
+    }
+
+    public void setAppointments(Set<Appointment> appointments) {
+        this.appointments = appointments;
     }
 }

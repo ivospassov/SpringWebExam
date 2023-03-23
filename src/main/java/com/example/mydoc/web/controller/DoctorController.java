@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class DoctorController {
     @GetMapping("/hospital/{id}")
     public String handleGetDoctorsButtonByHospitalId(@PathVariable Long id) {
 
+        //Es ist möglich, die ID-Anforderung später zu entfernen
         Hospital hospital = this.hospitalService.findById(id);
 
         //TODO: try to redirect with path variable(required = false) with the Hospital name
@@ -35,8 +37,8 @@ public class DoctorController {
     @GetMapping("/doctors")
     public String renderAllDoctors(ModelMap modelMap) {
         List<Doctor> allDoctors = this.doctorService.findAllDoctors();
-
         modelMap.addAttribute("doctors", allDoctors);
+
         return "/doctors";
     }
 }

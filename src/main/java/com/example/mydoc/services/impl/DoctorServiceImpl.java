@@ -1,12 +1,15 @@
 package com.example.mydoc.services.impl;
 
 import com.example.mydoc.models.entities.Doctor;
+import com.example.mydoc.models.enums.SpecialtyType;
 import com.example.mydoc.repositories.DoctorRepository;
 import com.example.mydoc.services.DoctorService;
 import com.example.mydoc.services.ExtractDoctorInfo;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 @Service
 public class DoctorServiceImpl implements DoctorService {
@@ -45,5 +48,15 @@ public class DoctorServiceImpl implements DoctorService {
     @Override
     public List<Doctor> findAllDoctors() {
         return this.doctorRepository.findAll();
+    }
+
+    @Override
+    public Optional<Doctor> findDoctorById(Long id) {
+        return this.doctorRepository.findById(id);
+    }
+
+    @Override
+    public List<Doctor> findByCityNameAndSpecialtyName(String city, SpecialtyType specialtyType) {
+        return this.doctorRepository.findByCityNameAndSpecialtyName(city, specialtyType);
     }
 }

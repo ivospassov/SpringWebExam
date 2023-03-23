@@ -37,19 +37,6 @@ public class HospitalServiceImpl implements HospitalService {
     public void seedHospitals() {
 
         if (isHospitalListEmpty()) {
-//            List<Hospital> hospitals = Arrays
-//                    .stream(HospitalsName.values())
-//                    .map(hospital -> {
-//                        Random random = new Random();
-//                        Integer randomId = random.ints(1, 5)
-//                                                .findFirst().getAsInt();
-//                        Hospital newHospital = new Hospital(hospital.name(), cityService.findByCityId(Long.parseLong(String.valueOf(randomId))));
-//                        return setImageUrl(newHospital);
-//                    }).toList();
-//
-//            List<Hospital> hospitals = Arrays
-//                    .stream(HospitalsName.values()).toList();
-
             Hospital isul = new Hospital(HospitalsName.Isul.name(), cityService.findByCityId(1L));
             Hospital tokuda = new Hospital(HospitalsName.Tokuda.name(), cityService.findByCityId(2L));
             Hospital nadezhda = new Hospital(HospitalsName.Nadezhda.name(), cityService.findByCityId(3L));
