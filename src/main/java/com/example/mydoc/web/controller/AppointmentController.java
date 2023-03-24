@@ -1,15 +1,19 @@
 package com.example.mydoc.web.controller;
 
 import com.example.mydoc.models.dto.AppointmentDTO;
+import com.example.mydoc.models.entities.Appointment;
 import com.example.mydoc.models.entities.Doctor;
 import com.example.mydoc.services.AppointmentService;
 import com.example.mydoc.services.DoctorService;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
+
+import java.util.List;
 
 @Controller
 public class AppointmentController {
@@ -29,7 +33,7 @@ public class AppointmentController {
     @GetMapping("/doctors/appointments/{id}")
     public ModelAndView renderAppointmentSection(@PathVariable(name = "id") Long id, ModelAndView modelAndView) {
         modelAndView.addObject("docId", id);
-        modelAndView.setViewName("appointment");
+        modelAndView.setViewName("appointment-form");
 
         return modelAndView;
     }
@@ -48,5 +52,21 @@ public class AppointmentController {
 
         //TODO: show pop-up message for successful booking
         return "redirect:/";
+    }
+
+    @GetMapping("/appointments-list")
+    public String renderAppointmentList(ModelMap modelMap) {
+
+        List<Appointment> appointmentList = this.appointmentService.getByPatientId();
+        modelMap.addAttribute("appointments", appointmentList);
+
+        return "/appointments-list";
+    }
+
+    @GetMapping("/appointments-list/cancel/{id}")
+    public String handleCancelAppointmentAction(@PathVariable("id") Long id) {
+        this.appointmentService.cancel(id);
+
+        return "redirect:/appointments-list";
     }
 }

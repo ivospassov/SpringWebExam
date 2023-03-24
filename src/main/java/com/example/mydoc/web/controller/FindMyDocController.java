@@ -43,13 +43,12 @@ public class FindMyDocController {
     public String handleFindMyDocForm(MyDocDTO myDocDTO, ModelMap modelMap) {
 
         Optional<Hospital> optionalHospital = hospitalService.findByName(myDocDTO.getHospital());
-        boolean isFieldNotEmpty = myDocDTO.getHospital().length() != 0;
+        boolean isHospitalFieldNotEmpty = myDocDTO.getHospital().length() != 0;
 
         //Finding a particular hospital is a priority over the other filters
-        if (optionalHospital.isEmpty() && isFieldNotEmpty) {
-            //TODO: render custom 404 page
+        if (optionalHospital.isEmpty() && isHospitalFieldNotEmpty) {
             return "/404Page";
-        } else if (optionalHospital.isPresent() && isFieldNotEmpty) {
+        } else if (optionalHospital.isPresent() && isHospitalFieldNotEmpty) {
             return "redirect:/hospitals/" + optionalHospital.get().getId();
         } else if (myDocDTO.getLocation() != null && myDocDTO.getSpecialty() != null) {
 
@@ -60,8 +59,6 @@ public class FindMyDocController {
             modelMap.addAttribute("doctors", filteredDoctorsByCityAndSpecialty);
             return "/doctors";
         }
-
-        //TODO: Render by location and specialty
         return "redirect:/";
     }
 }

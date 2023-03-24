@@ -96,3 +96,32 @@ h2 {
 .well-title {
   margin-bottom: 40px;
 }
+
+#doc-img-list {
+  max-width: 100%;
+  width: 700px;
+  border-radius: 7%;
+}
+
+.checked {
+  color: orange;
+}
+
+.review-body {
+  /*background-image: url('review-bg.jpg');*/
+  background-image: url('https://png.pngtree.com/background/20210716/original/pngtree-office-desktop-background-picture-image_1353808.jpg');
+  background-repeat: no-repeat;
+  height: 400px;
+  background-size: cover;
+}
+
+.rating-container {
+  width: 35%;
+  margin-left: 15%;
+  padding-bottom: 50%;
+  margin-top: 6%;
+}
+
+#hidden-info {
+  display: none;
+}

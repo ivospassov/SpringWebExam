@@ -33,6 +33,11 @@ public class AuthServiceImpl implements AuthService {
     }
 
     @Override
+    public boolean emailExists(String email) {
+        return this.userRepository.findByEmail(email).isPresent();
+    }
+
+    @Override
     public boolean doPasswordsMatch(String password, String confirmPassword) {
         return password.equals(confirmPassword);
     }

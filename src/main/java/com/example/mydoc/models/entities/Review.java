@@ -7,7 +7,7 @@ import jakarta.persistence.*;
 public class Review extends BaseEntity {
 
     @Column(columnDefinition = "TEXT")
-    private String description;
+    private String comment;
 
     @ManyToOne
     private User patient;
@@ -17,12 +17,12 @@ public class Review extends BaseEntity {
 
     public Review() {}
 
-    public String getDescription() {
-        return description;
+    public String getComment() {
+        return comment;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setComment(String comment) {
+        this.comment = comment;
     }
 
     public User getUser() {

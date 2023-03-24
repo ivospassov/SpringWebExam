@@ -29,7 +29,7 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "patient", targetEntity = Review.class)
     private Set<Review> reviews;
 
-    @OneToMany(mappedBy = "patient", targetEntity = Appointment.class)
+    @OneToMany(mappedBy = "patient", targetEntity = Appointment.class, cascade = { CascadeType.MERGE, CascadeType.PERSIST })
     private Set<Appointment> appointments;
 
     public User() {}

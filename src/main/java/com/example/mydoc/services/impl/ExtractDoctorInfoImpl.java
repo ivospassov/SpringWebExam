@@ -45,9 +45,6 @@ public class ExtractDoctorInfoImpl implements ExtractDoctorInfo {
         City blagoevgradCity = this.cityService.findByCityId(5L);
         Random random = new Random();
 
-        // 8 HOSPITALS AND 5 CITIES
-        //TODO: Generate doc info about all specialties (3-5 doctors per specialty)
-        //TODO: Make sure the CITY and HOSPITALS correspond with each other
         List<Doctor> doctors = new ArrayList<>(List.of(
                 new Doctor("Michaelis", "Masturbakis", 29,
                         specialties.get(0), DoctorBiography.IMMUNOLOGY_MASTURBAKIS.getBiographyText(), "mmasturbakis@mydoc.com",

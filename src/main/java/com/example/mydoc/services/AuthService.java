@@ -7,6 +7,8 @@ public interface AuthService {
 
     boolean usernameExists(String username);
 
+    boolean emailExists(String email);
+
     boolean doPasswordsMatch(String password, String confirmPassword);
 
     void registerUser(UserRegisterDTO userRegisterDTO);

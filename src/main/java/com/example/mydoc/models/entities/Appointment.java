@@ -15,6 +15,9 @@ public class Appointment extends BaseEntity {
     @Column(name = "appointment_time")
     private LocalTime appointmentTime;
 
+    @Column(nullable = false)
+    private String status;
+
     @ManyToOne
     private User patient;
 
@@ -53,5 +56,13 @@ public class Appointment extends BaseEntity {
 
     public void setAppointmentTime(LocalTime appointmentTime) {
         this.appointmentTime = appointmentTime;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

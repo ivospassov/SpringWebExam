@@ -12,6 +12,9 @@ import com.example.mydoc.web.session.UserLoginSession;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.Optional;
+
 @Service
 public class AppointmentServiceImpl implements AppointmentService {
 
@@ -38,8 +41,21 @@ public class AppointmentServiceImpl implements AppointmentService {
         doctor.getAppointments().add(appointment);
         appointment.setDoctor(doctor);
         appointment.setPatient(retrieveUserById());
+        appointment.setStatus("Going");
 
         this.doctorRepository.save(doctor);
+    }
+
+    @Override
+    public List<Appointment> getByPatientId() {
+        return this.appointmentRepository.findAllByPatientId(this.userLoginSession.getId());
+    }
+
+    @Override
+    public void cancel(Long id) {
+        Appointment appointmentToCancel = this.appointmentRepository.findById(id).get();
+        appointmentToCancel.setStatus("Cancelled");
+        this.appointmentRepository.save(appointmentToCancel);
     }
 
     private User retrieveUserById() {

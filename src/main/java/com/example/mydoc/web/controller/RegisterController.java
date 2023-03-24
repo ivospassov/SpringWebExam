@@ -35,9 +35,9 @@ public class RegisterController {
                                      RedirectAttributes redirectAttributes) {
 
         if (bindingResult.hasErrors()) {
-                redirectAttributes
-                        .addFlashAttribute("registerDTO", registerDTO)
-                        .addFlashAttribute("org.springframework.validation.BindingResult.registerDTO", bindingResult);
+            redirectAttributes
+                    .addFlashAttribute("registerDTO", registerDTO)
+                    .addFlashAttribute("org.springframework.validation.BindingResult.registerDTO", bindingResult);
 
             return "redirect:/users/register";
         }
@@ -50,6 +50,16 @@ public class RegisterController {
             redirectAttributes
                     .addFlashAttribute("usernameIsValid", false)
                     .addFlashAttribute("registerDTO", registerDTO);
+            return "redirect:/users/register";
+        }
+
+        //Check if email exists already
+        boolean emailExists = this.authService.emailExists(registerDTO.getEmail());
+        if (emailExists) {
+            redirectAttributes
+                    .addFlashAttribute("registerDTO", registerDTO)
+                    .addFlashAttribute("emailIsValid", false);
+
             return "redirect:/users/register";
         }
 
