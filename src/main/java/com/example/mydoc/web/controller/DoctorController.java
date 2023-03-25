@@ -27,7 +27,6 @@ public class DoctorController {
     @GetMapping("/hospital/{id}")
     public String handleGetDoctorsButtonByHospitalId(@PathVariable Long id) {
 
-        //Es ist möglich, die ID-Anforderung später zu entfernen
         Hospital hospital = this.hospitalService.findById(id);
 
         //TODO: try to redirect with path variable(required = false) with the Hospital name

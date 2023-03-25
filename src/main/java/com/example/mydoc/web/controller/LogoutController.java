@@ -16,6 +16,6 @@ public class LogoutController {
     @GetMapping("/users/logout")
     public String logoutUser() {
         this.authService.logoutUser();
-        return "redirect:/";
+        return "redirect:/find-mydoc";
     }
 }

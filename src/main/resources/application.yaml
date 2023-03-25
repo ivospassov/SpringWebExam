@@ -16,10 +16,6 @@ spring:
     password: secret
     username: root
     url: jdbc:mysql://localhost:3307/mydoc_db?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true&serverTimezone=UTC
-  security:
-    user:
-      name: user
-      password: $2a$12$cYRoI8SYwe/kxDYskaQ/m.PnO9w3ipxzZVKYJBoV018ZImy6ptRqK
 logging:
   level:
     org:
@@ -32,3 +28,6 @@ logging:
 server:
   port: 8081
 
+app:
+  default:
+    password: secret

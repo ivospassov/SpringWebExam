@@ -16,13 +16,6 @@
 <div class="rating-container">
     <h1 class="form-heading">Rating Form</h1>
     <form class="review-form" th:action="@{/review/comment/{id}(id=${doctor.id})}" th:method="POST" th:object="${reviewDTO}">
-        <div class="stars-rating">
-            <span id="star-1" class="fa fa-star" href="#"></span>
-            <span id="star-2" class="fa fa-star" href="#"></span>
-            <span id="star-3" class="fa fa-star" href="#"></span>
-            <span id="star-4" class="fa fa-star" href="#"></span>
-            <span id="star-5" class="fa fa-star" href="#"></span>
-        </div>
         <label for="exampleFormControlTextarea1">Leave a comment:</label>
         <div class="form-group">
             <textarea class="form-control" id="exampleFormControlTextarea1" rows="5" th:field="*{comment}" name="comment"></textarea>

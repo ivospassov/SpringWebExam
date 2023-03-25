@@ -11,19 +11,20 @@
 >
     <br/>
     <br/>
-    <form th:method="POST" th:href="@{/users/login}" th:object="${loginDTO}" class="mx-auto w-25 bg-blur mp-5">
+    <form method="POST" th:action="@{/users/login}" th:object="${loginDTO}" class="mx-auto w-25 bg-blur mp-5">
+<!--        th:method="POST" th:href="@{/users/login}" th:object="${loginDTO}"-->
 
         <div th:each="error: ${#fields.errors()}" th:text="${error}" class="text-danger">Error messages</div>
         <div th:if="${userIsValid == false}" class="text-danger text-center mb-1">Incorrect username or password!</div>
 
         <div class="form-group">
-            <label for="exampleInputUsername1">Username</label>
+            <label for="username">Username</label>
             <input
                     th:field="*{username}"
                     name="username"
                     type="text"
                     class="form-control"
-                    id="exampleInputUsername1"
+                    id="username"
                     aria-describedby="emailHelp"
                     placeholder="Enter username"
             />
@@ -32,13 +33,13 @@
             >
         </div>
         <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
+            <label for="password">Password</label>
             <input
                     th:field="*{password}"
                     name="password"
                     type="password"
                     class="form-control"
-                    id="exampleInputPassword1"
+                    id="password"
                     placeholder="Password"
             />
             <small class="form-text text-muted">

@@ -20,31 +20,34 @@
                 <form th:action="@{/appointment/book/{id}(id=${docId})}" th:method="POST" th:object="${appointmentDTO}">
                     <!-- Form start -->
                     <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label" for="name">Name</label>
-                                <input th:field="*{name}" id="name" name="name" type="text" placeholder="Name"
-                                       class="form-control input-md">
-                            </div>
-                        </div>
+<!--                        <div class="col-md-6">-->
+<!--                            <div class="form-group">-->
+<!--                                <label class="control-label" for="name">Name</label>-->
+<!--                                <input th:field="*{name}" id="name" name="name" type="text" placeholder="Name"-->
+<!--                                       class="form-control input-md">-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        &lt;!&ndash; Text input&ndash;&gt;-->
+<!--                        <div class="col-md-6">-->
+<!--                            <div class="form-group">-->
+<!--                                <label class="control-label" for="email">Email</label>-->
+<!--                                <input th:field="*{email}" id="email" name="email" type="text" placeholder="E-Mail"-->
+<!--                                       class="form-control input-md">-->
+<!--                            </div>-->
+<!--                        </div>-->
                         <!-- Text input-->
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label class="control-label" for="email">Email</label>
-                                <input th:field="*{email}" id="email" name="email" type="text" placeholder="E-Mail"
+                                <label class="control-label" for="date">Name</label>
+                                <input th:field="*{preferredDate}" id="date" name="date" type="text" placeholder="01/05/2023"
                                        class="form-control input-md">
-                            </div>
-                        </div>
-                        <!-- Text input-->
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <label class="control-label" for="date">Preferred Date</label>
-                                <select th:field="*{preferredDate}" id="date" name="time" class="form-control">
-                                    <option value="empty" th:disabled th:selected>Choose a preferred date</option>
-                                    <option th:value="'01/04/2023'">01/04/2023</option>
-                                    <option th:value="'02/04/2023'">02/04/2023</option>
-                                    <option th:value="'03/04/2023'">03/04/2023</option>
-                                </select>
+<!--                                <label class="control-label" for="date">Preferred Date</label>-->
+<!--                                <select th:field="*{preferredDate}" id="date" name="time" class="form-control">-->
+<!--                                    <option value="empty" th:disabled th:selected>Choose a preferred date</option>-->
+<!--                                    <option th:value="'01/04/2023'">01/04/2023</option>-->
+<!--                                    <option th:value="'02/04/2023'">02/04/2023</option>-->
+<!--                                    <option th:value="'03/04/2023'">03/04/2023</option>-->
+<!--                                </select>-->
                             </div>
                         </div>
                         <!-- Select Basic -->
@@ -55,7 +58,8 @@
                                     <option value="empty" th:disabled th:selected>Choose a preferred time</option>
                                     <option th:value="'08:00'" selected>8:00 to 9:00</option>
                                     <option th:value="'09:00'">9:00 to 10:00</option>
-                                    <option th:value="'10:00'">10:00 to 1:00</option>
+                                    <option th:value="'10:00'">10:00 to 11:00</option>
+                                    <option th:value="'10:00'">11:00 to 12:00</option>
                                 </select>
                             </div>
                         </div>

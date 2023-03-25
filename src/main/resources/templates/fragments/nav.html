@@ -17,7 +17,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link" href="#">Find MyDoc</a>
+                <a class="nav-link" href="find-mydoc">Find MyDoc</a>
             </li>
             <li th:if="${@userLoginSession.id != null}" class="nav-item">
                 <a class="nav-link" href="/appointments-list">Appointments</a>
@@ -69,16 +69,36 @@
                 >
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input
-                    class="form-control mr-sm-2"
-                    type="search"
-                    placeholder="Search"
-                    aria-label="Search"
-            />
-            <button class="btn btn-danger my-2 my-sm-0 rounded" type="submit">
-                Search
-            </button>
-        </form>
+        <ul class="form-inline my-2 my-lg-0 navbar-nav mr-0">
+            <li class="nav-item">
+                <a
+                        class="nav-link"
+                        th:href="@{/about-us}"
+                        tabindex="-1"
+                        aria-disabled="true"
+                >About Us</a
+                >
+            </li>
+            <li class="nav-item">
+                <a
+                        class="nav-link"
+                        th:href="@{/contacts}"
+                        tabindex="-1"
+                        aria-disabled="true"
+                >Contacts</a
+                >
+            </li>
+        </ul>
+<!--        <form class="form-inline my-2 my-lg-0">-->
+<!--            <input-->
+<!--                    class="form-control mr-sm-2"-->
+<!--                    type="search"-->
+<!--                    placeholder="Search"-->
+<!--                    aria-label="Search"-->
+<!--            />-->
+<!--            <button class="btn btn-danger my-2 my-sm-0 rounded" type="submit">-->
+<!--                Search-->
+<!--            </button>-->
+<!--        </form>-->
     </div>
 </nav>

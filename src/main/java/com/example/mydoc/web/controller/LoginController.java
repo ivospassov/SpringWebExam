@@ -14,6 +14,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class LoginController {
 
+    private final AuthService authService;
+
     public LoginController(AuthService authService) {
         this.authService = authService;
     }
@@ -22,8 +24,6 @@ public class LoginController {
     public UserLoginDTO userLoginDTO() {
         return new UserLoginDTO();
     }
-
-    private final AuthService authService;
 
     @GetMapping("/users/login")
     public String renderLoginPage() {
@@ -56,6 +56,6 @@ public class LoginController {
         //TODO: redirect to HOME page
         //TODO: Display 'Hello ${USER} alert message on display!'
         this.authService.loginUser(userLoginDTO);
-        return "redirect:/";
+        return "redirect:/find-mydoc";
     }
 }

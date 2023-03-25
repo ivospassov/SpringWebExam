@@ -54,6 +54,6 @@ public class ReviewController {
         }
 
         this.reviewService.leaveReview(id, reviewDTO);
-        return "redirect:/";
+        return "redirect:/find-mydoc";
     }
 }

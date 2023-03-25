@@ -51,7 +51,7 @@ public class AppointmentController {
 
 
         //TODO: show pop-up message for successful booking
-        return "redirect:/";
+        return "redirect:/find-mydoc";
     }
 
     @GetMapping("/appointments-list")

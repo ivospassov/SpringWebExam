@@ -1,5 +1,7 @@
 package com.example.mydoc.config;
 
+import com.example.mydoc.models.enums.UserRoleEnum;
+import com.example.mydoc.repositories.UserRepository;
 import org.modelmapper.Converter;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.spi.MappingContext;
@@ -14,6 +16,12 @@ import java.time.format.DateTimeFormatter;
 
 @Configuration
 public class Config {
+
+    private final UserRepository userRepository;
+
+    public Config(UserRepository userRepository) {
+        this.userRepository = userRepository;
+    }
 
     @Bean
     public org.springframework.security.crypto.password.PasswordEncoder passwordEncoder() {
@@ -42,23 +50,39 @@ public class Config {
     }
 
 //    @Bean
-//    public SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
-//        return httpSecurity.authorizeHttpRequests()
-//                .and().csrf().disable()
+//    public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
+//        http
 //                .authorizeHttpRequests()
-//                .requestMatchers("/home", "/users/logout").authenticated()
-//                .requestMatchers("/gosho").hasRole("ADMIN")
 //                .requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll()
 //                .requestMatchers("/lib/bootstrap/**", "/css/**", "/img/**").permitAll()
-//                .requestMatchers("/", "/users/login", "/users/register").permitAll()
-//                .and().formLogin()
-//                .loginPage("/users/login")
+//                .requestMatchers("/", "/users/login", "/users/register").anonymous()
+//                .requestMatchers("/appointments-list").hasRole(UserRoleEnum.ADMIN.name())
+//                .anyRequest().authenticated()
+//                .and().formLogin().loginPage("/users/login")
 //                .usernameParameter("username")
 //                .passwordParameter("password")
-//                .failureForwardUrl("/users/login")
-//                .successForwardUrl("/")
-//                .and().logout().deleteCookies("JSESSIONID")
-//                .and().httpBasic()
-//                .and().build();
+//                .defaultSuccessUrl("/", true)
+//                .failureForwardUrl("/404")
+//                .and().logout()
+//                .logoutUrl("/users/logout")
+//                .logoutSuccessUrl("/")
+//                .invalidateHttpSession(true)
+//                .and().securityContext()
+//                .securityContextRepository(securityContextRepository());
+//
+//        return http.build();
+//    }
+//
+//    @Bean
+//    public UserDetailsService userDetailsService(UserRepository userRepository) {
+//        return new ApplicationUserDetailsService(userRepository);
+//    }
+//
+//    @Bean
+//    public SecurityContextRepository securityContextRepository() {
+//        return new DelegatingSecurityContextRepository(
+//                new RequestAttributeSecurityContextRepository(),
+//                new HttpSessionSecurityContextRepository()
+//        );
 //    }
 }

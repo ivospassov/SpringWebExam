@@ -4,6 +4,7 @@ import com.example.mydoc.services.CityService;
 import com.example.mydoc.services.DoctorService;
 import com.example.mydoc.services.HospitalService;
 import com.example.mydoc.services.SpecialtyService;
+import com.example.mydoc.services.impl.InitRoles;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -15,7 +16,7 @@ public class Init implements CommandLineRunner {
     private final HospitalService hospitalService;
     private final SpecialtyService specialtyService;
 
-    public Init(CityService cityService, DoctorService doctorService, HospitalService hospitalService, SpecialtyService specialtyService) {
+    public Init(CityService cityService, DoctorService doctorService, HospitalService hospitalService, SpecialtyService specialtyService, InitRoles initRoles) {
         this.cityService = cityService;
         this.doctorService = doctorService;
         this.hospitalService = hospitalService;
