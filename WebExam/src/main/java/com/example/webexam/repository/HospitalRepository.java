@@ -1,6 +1,6 @@
 package com.example.webexam.repository;
 
-import com.example.mydoc.models.entities.Hospital;
+import com.example.webexam.model.entity.Hospital;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

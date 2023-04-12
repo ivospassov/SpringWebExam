@@ -1,7 +1,7 @@
 package com.example.webexam.repository;
 
-import com.example.mydoc.models.entities.Doctor;
-import com.example.mydoc.models.enums.SpecialtyType;
+import com.example.webexam.model.entity.Doctor;
+import com.example.webexam.model.enums.SpecialtyType;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
