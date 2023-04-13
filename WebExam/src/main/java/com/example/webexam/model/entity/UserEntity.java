@@ -1,101 +1,101 @@
 package com.example.webexam.model.entity;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 @Table(name = "users")
-public class UserEntity extends BaseEntity{
+public class UserEntity extends BaseEntity {
 
-  @Column(nullable = false)
-  private String email;
-  @Column(nullable = false)
-  private String firstName;
-  private String lastName;
-  private String country;
-  @Column(nullable = false)
-  private String password;
+    @Basic
+    private String firstName;
 
-  @ManyToMany(fetch = FetchType.EAGER)
-  private List<UserRoleEntity> roles = new ArrayList<>();
+    @Basic
+    private String lastName;
 
-  public String getEmail() {
-    return email;
-  }
+    @Column(nullable = false, unique = true)
+    private String email;
 
-  public UserEntity setEmail(String email) {
-    this.email = email;
-    return this;
-  }
+    @Column(nullable = false)
+    private String password;
 
-  public String getFirstName() {
-    return firstName;
-  }
+    @Basic
+    private String city;
 
-  public UserEntity setFirstName(String firstName) {
-    this.firstName = firstName;
-    return this;
-  }
+    @ManyToMany(fetch = FetchType.EAGER)
+    private List<UserRoleEntity> roles = new ArrayList<>();
 
-  public String getLastName() {
-    return lastName;
-  }
+    public String getEmail() {
+        return email;
+    }
 
-  public UserEntity setLastName(String lastName) {
-    this.lastName = lastName;
-    return this;
-  }
+    public UserEntity setEmail(String email) {
+        this.email = email;
+        return this;
+    }
 
-  public String getPassword() {
-    return password;
-  }
+    public String getFirstName() {
+        return firstName;
+    }
 
-  public UserEntity setPassword(String password) {
-    this.password = password;
-    return this;
-  }
+    public UserEntity setFirstName(String firstName) {
+        this.firstName = firstName;
+        return this;
+    }
 
-  public List<UserRoleEntity> getRoles() {
-    return roles;
-  }
+    public String getLastName() {
+        return lastName;
+    }
 
-  public UserEntity setRoles(List<UserRoleEntity> roles) {
-    this.roles = roles;
-    return this;
-  }
+    public UserEntity setLastName(String lastName) {
+        this.lastName = lastName;
+        return this;
+    }
 
-  public UserEntity addRole(UserRoleEntity role) {
-    this.roles.add(role);
-    return this;
-  }
+    public String getPassword() {
+        return password;
+    }
 
-  public String getCountry() {
-    return country;
-  }
+    public UserEntity setPassword(String password) {
+        this.password = password;
+        return this;
+    }
 
-  public UserEntity setCountry(String country) {
-    this.country = country;
-    return this;
-  }
+    public List<UserRoleEntity> getRoles() {
+        return roles;
+    }
 
-  @Override
-  public String toString() {
-    return "UserEntity{" +
-        "id=" + super.getId() +
-        ", email='" + email + '\'' +
-        ", firstName='" + firstName + '\'' +
-        ", lastName='" + lastName + '\'' +
-        ", country='" + country + '\'' +
-        ", password='" + (password != null ? "[PROVIDED]" : "[N/A]") + '\'' +
-        ", roles=" + roles +
-        '}';
-  }
+    public UserEntity setRoles(List<UserRoleEntity> roles) {
+        this.roles = roles;
+        return this;
+    }
+
+    public UserEntity addRole(UserRoleEntity role) {
+        this.roles.add(role);
+        return this;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public UserEntity setCity(String country) {
+        this.city = country;
+        return this;
+    }
+
+    @Override
+    public String toString() {
+        return "UserEntity{" +
+                "id=" + super.getId() +
+                ", email='" + email + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", country='" + city + '\'' +
+                ", password='" + (password != null ? "[PROVIDED]" : "[N/A]") + '\'' +
+                ", roles=" + roles +
+                '}';
+    }
 }

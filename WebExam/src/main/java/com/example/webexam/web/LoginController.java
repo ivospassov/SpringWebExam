@@ -10,22 +10,19 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 @Controller
 public class LoginController {
 
-  @GetMapping("/users/login")
-  public String login() {
-    return "auth-login";
-  }
+    @GetMapping("/users/login")
+    public String renderLoginPage() {
+        return "auth-login";
+    }
 
-  // POST (username: admin@example.com, password: bad) -> 301 (Location: /users/login)
+    @PostMapping("/users/login-error")
+    public String handleFailedLogin(
+            @ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY) String username,
+            RedirectAttributes redirectAttributes) {
 
-  @PostMapping("/users/login-error")
-  public String onFailedLogin(
-      @ModelAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY) String username,
-      RedirectAttributes redirectAttributes) {
+        redirectAttributes.addFlashAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY, username);
+        redirectAttributes.addFlashAttribute("bad_credentials", true);
 
-    redirectAttributes.addFlashAttribute(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_USERNAME_KEY, username);
-    redirectAttributes.addFlashAttribute("bad_credentials", true);
-
-    return "redirect:/users/login";
-  }
-
+        return "redirect:/users/login";
+    }
 }

@@ -72,7 +72,7 @@ public class InitService {
         setEmail("admin@example.com").
         setFirstName("Admin").
         setLastName("Adminov").
-        setCountry("Bulgaria").
+            setCity("Sofia").
         setPassword(passwordEncoder.encode("topsecret")).
         setRoles(userRoleRepository.findAll());
 
@@ -87,8 +87,8 @@ public class InitService {
     var moderatorUser = new UserEntity().
         setEmail("moderator@example.com").
         setFirstName("Moderator").
-        setLastName("Moderatorov").
-        setCountry("Greece").
+        setLastName("Plovdiv").
+            setCity("Greece").
         setPassword(passwordEncoder.encode("topsecret")).
         setRoles(List.of(moderatorRole));
 
@@ -101,7 +101,7 @@ public class InitService {
         setEmail("user@example.com").
         setFirstName("User").
         setLastName("Userov").
-        setCountry("Tanzania").
+            setCity("Bourgas").
         setPassword(passwordEncoder.encode("topsecret"));
 
     userRepository.save(normalUser);

@@ -23,23 +23,8 @@ public class DoctorController {
         this.doctorService = doctorService;
     }
 
-    @GetMapping("/hospital/{id}")
-    public String handleGetDoctorsButtonByHospitalId(@PathVariable Long id, RedirectAttributes redirectAttributes) {
-
-        Hospital hospital = this.hospitalService.findById(id);
-        List<Doctor> doctors = this.doctorService.findDoctorsByHospital(hospital);
-
-        redirectAttributes.addFlashAttribute("doctors", doctors);
-
-        //TODO: try to redirect with path variable(required = false) with the Hospital name
+    @GetMapping("/doctors")
+    public String renderAllDoctors() {
         return "/doctors";
     }
-
-//    @GetMapping("/doctors")
-//    public String renderAllDoctors(ModelMap modelMap) {
-//        List<Doctor> allDoctors = this.doctorService.findAllDoctors();
-//        modelMap.addAttribute("doctors", allDoctors);
-//
-//        return "/doctors";
-//    }
 }

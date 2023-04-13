@@ -18,6 +18,9 @@ public class Appointment extends BaseEntity {
     @Column(nullable = false)
     private String status;
 
+    @Column(nullable = false, name = "visitation_purpose")
+    private String purposeOfVisit;
+
     @ManyToOne
     private UserEntity patient;
 
@@ -64,5 +67,13 @@ public class Appointment extends BaseEntity {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getPurposeOfVisit() {
+        return purposeOfVisit;
+    }
+
+    public void setPurposeOfVisit(String purposeOfVisit) {
+        this.purposeOfVisit = purposeOfVisit;
     }
 }

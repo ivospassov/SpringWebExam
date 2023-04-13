@@ -54,7 +54,7 @@ h2 {
     background-color: #222BFF;
 }
 
-#btn-search {
+#btn-search, #btn-my-doc-login {
     background-color: #222BFF;
     border-color: #222BFF;
     color: white;

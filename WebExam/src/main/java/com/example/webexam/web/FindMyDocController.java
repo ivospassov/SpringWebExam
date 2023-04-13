@@ -6,6 +6,9 @@ import com.example.webexam.model.entity.Hospital;
 import com.example.webexam.model.enums.SpecialtyType;
 import com.example.webexam.service.contracts.DoctorService;
 import com.example.webexam.service.contracts.HospitalService;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +35,7 @@ public class FindMyDocController {
     }
 
     @GetMapping("/find-my-doc")
-    public String showIndex() {
+    public String renderFindMyDocPage() {
         return "my-doc";
     }
 
@@ -59,8 +62,4 @@ public class FindMyDocController {
         return "redirect:/find-my-doc";
     }
 
-    @GetMapping("/404")
-    public String errorNotFound() {
-        return "/404Page";
-    }
 }
