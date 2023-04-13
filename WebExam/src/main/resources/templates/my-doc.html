@@ -18,7 +18,7 @@
   </div>
   <div id="first-container" class="mt-5 appointment-section">
 
-    <form method="POST" th:action="@{/find-mydoc}" th:object="${myDocDTO}">
+    <form method="POST" th:action="@{/find-my-doc}" th:object="${myDocDTO}">
       <h2 class="my-3">
         Let's Find MyDoc and Book <br/>
         An Appointment!
@@ -57,7 +57,7 @@
                 placeholder="Search a specific Health Center"
         />
       </div>
-      <button id="btn-search" type="submit" class="btn btn-danger my-1.5">
+      <button id="btn-search" type="submit" class="btn my-1.5">
         Search
       </button>
 

@@ -5,6 +5,10 @@ import com.example.webexam.model.entity.UserRoleEntity;
 import com.example.webexam.model.enums.UserRoleEnum;
 import com.example.webexam.repository.UserRepository;
 import com.example.webexam.repository.UserRoleRepository;
+import com.example.webexam.service.contracts.CityService;
+import com.example.webexam.service.contracts.DoctorService;
+import com.example.webexam.service.contracts.HospitalService;
+import com.example.webexam.service.contracts.SpecialtyService;
 import jakarta.annotation.PostConstruct;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Value;
@@ -17,20 +21,32 @@ public class InitService {
   private final UserRoleRepository userRoleRepository;
   private final UserRepository userRepository;
   private final PasswordEncoder passwordEncoder;
+  private final CityService cityService;
+  private final DoctorService doctorService;
+  private final HospitalService hospitalService;
+  private final SpecialtyService specialtyService;
 
   public InitService(UserRoleRepository userRoleRepository,
-      UserRepository userRepository,
-      PasswordEncoder passwordEncoder,
-      @Value("${app.default.password}") String defaultPassword) {
+                     UserRepository userRepository,
+                     PasswordEncoder passwordEncoder,
+                     @Value("${app.default.password}") String defaultPassword, CityService cityService, DoctorService doctorService, HospitalService hospitalService, SpecialtyService specialtyService) {
     this.userRoleRepository = userRoleRepository;
     this.userRepository = userRepository;
     this.passwordEncoder = passwordEncoder;
+    this.cityService = cityService;
+    this.doctorService = doctorService;
+    this.hospitalService = hospitalService;
+    this.specialtyService = specialtyService;
   }
 
   @PostConstruct
   public void init() {
     initRoles();
     initUsers();
+    this.cityService.seedCities();
+    this.hospitalService.seedHospitals();
+    this.specialtyService.seedSpecialties();
+    this.doctorService.seedDoctors();
   }
 
   private void initRoles() {
